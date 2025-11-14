@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Global Lead Consultancy</title>
+
+  <style>
+    :root {
+      --navy:#003B73;
+      --teal:#007C91;
+      --accent:#FFC107;
+      --dark:#0E1A47;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --radius:14px;
+      --maxw:1100px;
+      --gap:24px;
+      --container-pad:20px;
+      --shadow:0 8px 24px rgba(14,26,71,0.08);
+      font-family:Inter, system-ui;
+    }
+
+    * { box-sizing:border-box }
+    body { margin:0; background:#f7fbfc; color:var(--dark); line-height:1.5 }
+    .container { max-width:var(--maxw); margin:0 auto; padding:0 var(--container-pad) }
+    a { text-decoration:none; color:inherit }
+
+    .topnav {
+      background:#fff;
+      height:90px;
+      display:flex;
+      align-items:center;
+      box-shadow:0 2px 12px rgba(0,0,0,0.04);
+      position:relative;
+      z-index:10;
+    }
+    .topnav-inner {
+      max-width:var(--maxw);
+      margin:auto;
+      height:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 var(--container-pad);
+    }
+
+    .big-logo { max-height:80px }
+
+    .nav-links { display:flex; gap:28px }
+    .nav-links a:hover { color:var(--teal) }
+
+    .search-box {
+      display:flex; align-items:center; gap:8px;
+      background:#f1f6f8; padding:6px 10px;
+      border-radius:20px;
+    }
+    header.hero {
+      position:relative;
+      padding:80px 0 60px;
+      margin-top:0;
+      color:white;
+
+      background:url("studnet2.png") center/cover no-repeat;
+    }
+
+    header.hero::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+      backdrop-filter:brightness(0.9);
+    }
+
+    .hero-inner {
+      position:relative;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:var(--gap);
+    }
+
+    .hero-left h1 { margin:0 0 12px; font-size:2.6rem; line-height:1.1 }
+    .hero-left p { margin:0 0 18px; color:#e9eef5 }
+    .btn-row { display:flex; gap:12px; flex-wrap:wrap }
+
+    .btn-primary {
+      background:var(--accent);
+      color:var(--dark);
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:600;
+    }
+    .btn-secondary {
+      border:1.4px solid rgba(255,255,255,0.6);
+      color:white;
+      padding:10px 16px;
+      border-radius:12px;
+    }
+
+ 
+    .hero-form {
+      margin-top:18px;
+      background:rgba(255,255,255,0.15);
+      padding:14px;
+      border-radius:12px;
+      backdrop-filter:blur(6px);
+      max-width:420px;
+    }
+    .hero-form input,
+    .hero-form select,
+    .hero-form button {
+      width:100%;
+      padding:10px;
+      border:0;
+      border-radius:8px;
+      margin:6px 0;
+    }
+
+    .wave {
+      position:absolute; bottom:-1px; left:0; width:100%;
+    }
+
+     
+    main{margin-top: -18px;padding-bottom:60px}
+    section{padding:40px 0}
+    .card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    h2{margin:0 0 12px;font-size:1.5rem}
+    p.lead{color:var(--muted);margin:0 0 10px}
+
+    .about-grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:center}
+    .about-visual{width:100%;height:240px;object-fit:cover;border-radius:12px}
+
+    .grid-3{display:grid;grid-template-columns:1fr;gap:18px}
+    .service-card{display:flex;gap:12px;align-items:flex-start}
+    .badge{width:46px;height:46px;border-radius:10px;background:#eaf8fb;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--teal)}
+
+  
+    .partners{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .partner{background:white;padding:12px;border-radius:10px;width:120px;height:56px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+
+.card.no-right-pad.no-padding-vertical {
+  padding-right: 0 !important;
+  padding-top: 0 !important;     
+  padding-bottom: 0 !important;  
+}
+
+.why-grid {
+  display: flex;
+  gap: 0;                   
+  align-items: stretch;      
+}
+
+.why-grid .left {
+  width: 58%;
+  padding: 40px;             
+  box-sizing: border-box;
+}
+.why-grid .right {
+  width: 42%;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+}
+.why-grid .right img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             
+  border-radius: 0 12px 12px 0; 
+}
+
+    .testi-slider{display:flex;gap:12px;overflow:auto;padding-bottom:6px}
+    .testi{min-width:260px;padding:18px;border-radius:12px;background:white;box-shadow:var(--shadow)}
+
+    .countries{display:flex;gap:12px;flex-wrap:wrap}
+    .country{padding:12px 14px;border-radius:10px;background:white;display:flex;gap:10px;align-items:center;box-shadow:0 6px 18px rgba(0,0,0,0.03)}
+
+    .cta{background:linear-gradient(90deg,var(--teal),var(--navy));color:white;padding:36px;border-radius:18px;text-align:center}
+
+     footer{background:#0f1724;color:#e6eef8;padding:28px 0;border-radius:12px;margin-top:22px}
+    .contact-grid{display:grid;grid-template-columns:1fr;gap:16px}
+
+    @media(min-width:900px){
+      .hero-inner{grid-template-columns:1fr 520px;padding:0 0}
+      .hero-left h1{font-size:3rem}
+      .hero-visual{display:block}
+      .about-grid{grid-template-columns:520px 1fr}
+      .grid-3{grid-template-columns:repeat(3,1fr)}
+      .why-grid{grid-template-columns:520px 1fr}
+      .contact-grid{grid-template-columns:1fr 360px}
+    }
+
+    .muted{color:var(--muted)}
+    .small{font-size:0.9rem}
+    .logo{font-weight:700;color:var(--accent)}
+    .flag{font-size:1.1rem}
+    input:focus, select:focus, textarea:focus{outline:3px solid rgba(0,140,160,0.12)}
+    .flag img {
+  width: 32px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+.country {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 16px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.countries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.small {
+  font-size: 13px;
+}
+
+.muted {
+  opacity: 0.75;
+}
+.no-padding-vertical {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.no-left-pad {
+  padding-left: 0 !important;
+}
+
+.about-visual.full-bleed {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 12px 0 0 12px; 
+  object-fit: cover;
+}
+  </style>
+  
+</head>
+
+<body>
+
+<div class="topnav">
+  <div class="topnav-inner">
+    <div class="logo-wrap">
+      <img src="logo2.jpg" class="big-logo">
+    </div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Blog</a>
+      <a href="#">About us</a>
+      <a class="active" href="#">Pages</a>
+      <a href="#">Contact us</a>
+    </div>
+
+    <div class="search-box">
+      <input placeholder="Search">
+      🔍
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="hero-left">
+      <div class="logo">Global Lead Consultancy</div>
+
+      <h1>Your Journey to Global Education Starts Here</h1>
+      <p>We guide you from ambition to admission ,helping you study at world-class universities.</p>
+
+      <div class="btn-row">
+        <a class="btn-primary" href="#contact">Book Free Counseling</a>
+        <a class="btn-secondary" href="#apply">Apply Now</a>
+      </div>
+
+      <div class="hero-form">
+        <form>
+          <input placeholder="Your name" required>
+          <input type="email" placeholder="Email address" required>
+          <select required>
+            <option value="">Preferred destination</option>
+            <option>UK</option>
+            <option>Canada</option>
+            <option>Australia</option>
+            <option>USA</option>
+          </select>
+          <button class="btn-primary">Get Started</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <svg class="wave" viewBox="0 0 1440 80">
+    <path fill="#f7fbfc" d="M0,80L120,64C240,48,480,16,720,8C960,0,1200,16,1320,24L1440,32V80H0Z"></path>
+  </svg>
+</header>
+
+<main class="container">
+
+    <section id="about" class="card no-padding-vertical no-left-pad" aria-labelledby="about-heading">
+  <div class="about-grid">
+    <img class="about-visual full-bleed" src="whowe.png" alt="About Global Lead Consultancy - counselors" />
+    <div>
+      <h2 id="about-heading">Who We Are</h2>
+      <p class="lead">Global Lead Consultancy is a trusted education advisory and we specialize in guiding students toward the best global study opportunities with clarity and confidence.</p>
+
+      <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px" class="card small">
+          <strong>Our Mission</strong>
+          <p class="small muted" style="margin-top:8px">To empower students with expert guidance, ethical counseling, and global opportunities.</p>
+        </div>
+        <div style="flex:1;min-width:220px" class="card small">
+          <strong>Our Vision</strong>
+          <p class="small muted" style="margin-top:8px">To become a leading educational bridge between passionate learners and world-class universities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="services" style="margin-top:26px">
+      <h2>Our Services</h2>
+      <p class="lead">End-to-end support for your study abroad journey.</p>
+
+      <div class="grid-3" style="margin-top:18px">
+        <div class="card service-card">
+          <div class="badge">A</div>
+          <div>
+            <strong>University Admission Support</strong>
+            <p class="small muted">Personalized counseling to help you choose the right university, course, and country.</p>
+          </div>
+        </div>
+
+        <div class="card service-card">
+          <div class="badge">B</div>
+          <div>
+            <strong>Visa Application Guidance</strong>
+            <p class="small muted">Dedicated experts ensure all your documents meet visa requirements and get you ready for the interview.</p>
+          </div>
+        </div>
+
+        <div class="card service-card">
+          <div class="badge">C</div>
+          <div>
+            <strong>Accommodation Assistance</strong>
+            <p class="small muted">Support finding safe, affordable student housing and pre-departure orientation.</p>
+          </div>
+        </div>
+
+        <div class="card service-card">
+          <div class="badge">D</div>
+          <div>
+            <strong>Document & SOP Review</strong>
+            <p class="small muted">Help craft compelling Statements of Purpose and review academic documentation.</p>
+          </div>
+        </div>
+
+        <div class="card service-card">
+          <div class="badge">E</div>
+          <div>
+            <strong>Interview Preparation</strong>
+            <p class="small muted">Mock sessions, tips, and confidence-building for university and embassy interviews.</p>
+          </div>
+        </div>
+
+        <div class="card service-card">
+          <div class="badge">F</div>
+          <div>
+            <strong>Career & Course Counseling</strong>
+            <p class="small muted">Guidance to match programs with your goals and future employability.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="partners" style="margin-top:26px">
+      <h2>Global Network & Association</h2>
+      <p class="lead"> we partner with reputable universities and colleges worldwide ,ensuring authentic processes and exclusive opportunities.</p>
+
+      <div class="partners" style="margin-top:14px">
+
+        <div class="partner"><img src="images/partner-1.png" alt="Partner 1" style="max-height:40px;object-fit:contain" /></div>
+        <div class="partner"><img src="images/partner-2.png" alt="Partner 2" style="max-height:40px;object-fit:contain" /></div>
+        <div class="partner"><img src="images/partner-3.png" alt="Partner 3" style="max-height:40px;object-fit:contain" /></div>
+        <div class="partner"><img src="images/partner-4.png" alt="Partner 4" style="max-height:40px;object-fit:contain" /></div>
+        <div class="partner"><img src="images/partner-5.png" alt="Partner 5" style="max-height:40px;object-fit:contain" /></div>
+        <div class="partner"><img src="images/partner-6.png" alt="Partner 6" style="max-height:40px;object-fit:contain" /></div>
+      </div>
+    </section>
+    <section class="card no-right-pad no-padding-vertical" style="margin-top:26px;">
+    <div class="why-grid">
+
+        <div class="left">
+            <h2>Why Choose Global Lead</h2>
+            <p>The smarter way to study abroad - expert guidance, transparent process, and proven outcomes.</p>
+
+            <ul>
+                <li>Strong partnerships with top universities and colleges worldwide</li>
+                <li>1000+ successful student placements</li>
+                <li>High visa success & personalized counseling</li>
+                <li>Transparent fees and ethical guidance</li>
+            </ul>
+        </div>
+
+        <div class="right">
+            <img src="global1.jpg" alt="Why Choose Global Lead">
+        </div>
+
+    </div>
+</section>
+
+
+    <section style="margin-top:26px">
+      <h2>Success Stories</h2>
+      <div class="testi-slider" style="margin-top:14px">
+        <div class="testi">
+          <strong>Aarati — MSc Computer Science (UK)</strong>
+          <p class="small muted" style="margin-top:8px">"Global Lead made my UK admission process so simple! Within a month, I received my offer from the University of Portsmouth."</p>
+        </div>
+
+        <div class="testi">
+          <strong>Bibek — MBA (Australia)</strong>
+          <p class="small muted" style="margin-top:8px">"The counselors were amazing. They supported me through every document and interview step. Highly recommend!"</p>
+        </div>
+
+        <div class="testi">
+          <strong>Sujan — BBA (Canada)</strong>
+          <p class="small muted" style="margin-top:8px">"I’m now studying in Canada and couldn’t have done it without their guidance."</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:26px" class="card">
+      <h2>Explore Study Destinations</h2>
+      <p class="lead">Choose the country that fits your goals and lifestyle.</p>
+
+     <div class="countries" style="margin-top:12px">
+
+  <div class="country">
+    <span class="flag"><img src="https://flagcdn.com/gb.svg" alt="UK"></span>
+    <div>
+      <strong>UK</strong>
+      <div class="small muted">World-class education & post-study work</div>
+    </div>
+  </div>
+
+  <div class="country">
+    <span class="flag"><img src="https://flagcdn.com/ca.svg" alt="Canada"></span>
+    <div>
+      <strong>Canada</strong>
+      <div class="small muted">Inclusive campuses & immigration pathways</div>
+    </div>
+  </div>
+
+  <div class="country">
+    <span class="flag"><img src="https://flagcdn.com/au.svg" alt="Australia"></span>
+    <div>
+      <strong>Australia</strong>
+      <div class="small muted">High-quality universities & student life</div>
+    </div>
+  </div>
+
+  <div class="country">
+    <span class="flag"><img src="https://flagcdn.com/us.svg" alt="USA"></span>
+    <div>
+      <strong>USA</strong>
+      <div class="small muted">Top-ranked research universities</div>
+    </div>
+  </div>
+
+  <div class="country">
+    <span class="flag"><img src="https://flagcdn.com/nz.svg" alt="New Zealand"></span>
+    <div>
+      <strong>New Zealand</strong>
+      <div class="small muted">Safe, scenic, and student-friendly</div>
+    </div>
+  </div>
+
+</div>
+
+  </div>
+
+</div>
+
+    </section>
+
+    <section style="margin-top:26px">
+      <div class="cta">
+        <h2 style="margin:0 0 8px">Start Your Global Journey Today!</h2>
+        <p class="small" style="margin:0 0 14px">Talk to our expert counselors — free of charge.</p>
+        <a class="btn-primary" href="#contact" style="display:inline-block">Book Your Free Counseling Now</a>
+      </div>
+    </section>
+
+<footer style="margin-top:26px">
+  <div class="container contact-grid">
+    <div>
+      <h3 style="margin:0 0 8px">Contact Us</h3>
+      <p class="small muted" style="margin:0 0 8px">Satdobato, Lalitpur, Nepal</p>
+      <p class="small muted" style="margin:0 0 8px">Phone: +977-98XXXXXXXX</p>
+      <p class="small muted" style="margin:0 0 8px">Email: info@globalleadconsultancy.com</p>
+
+      <div style="margin-top:10px;display:flex;gap:8px">
+
+        <a href="#" class="small" style="color:#e6eef8;display:flex;align-items:center;gap:5px">
+          <svg width="14" height="14" fill="#e6eef8" viewBox="0 0 24 24">
+            <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 
+            1.2-3.1 3-3.1 .9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 
+            1.2V11h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/>
+          </svg>
+          Facebook
+        </a>
+        <a href="#" class="small" style="color:#e6eef8;display:flex;align-items:center;gap:5px">
+          <svg width="14" height="14" fill="#e6eef8" viewBox="0 0 24 24">
+            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 
+            0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 
+            3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 
+            1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 
+            4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 
+            2.81 2.81 0 0 1 12 14.8zM17.8 7a1.2 1.2 0 1 
+            1-1.2-1.2A1.19 1.19 0 0 1 17.8 7z"/>
+          </svg>
+          Instagram
+        </a>
+
+        <a href="#" class="small" style="color:#e6eef8;display:flex;align-items:center;gap:5px">
+          <svg width="14" height="14" fill="#e6eef8" viewBox="0 0 24 24">
+            <path d="M19 3A2 2 0 0 1 21 5v14a2 2 0 0 1-2 
+            2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.3 
+            17v-7H5.8v7h2.5zm-.1-8.2c.9 0 1.4-.6 
+            1.4-1.3 0-.8-.6-1.3-1.4-1.3S6.8 6.7 6.8 
+            7.5c0 .7.5 1.3 1.4 1.3zM18.2 17v-4c0-2.2-1.2-3.3-2.8-3.3
+            -1.3 0-1.9.7-2.2 1.2V10h-2.4v7h2.4v-3.8c0-1 
+            .7-1.6 1.6-1.6 .9 0 1.6.6 1.6 1.6V17h2.4z"/>
+          </svg>
+          LinkedIn
+        </a>
+
+      </div>
+    </div>
+    <div class="card">
+      <strong>Quick Enquiry</strong>
+      <form action="#" method="post" style="margin-top:10px" onsubmit="alert('Replace form action with your server/service endpoint') || false">
+        <input name="name" placeholder="Name" style="padding:10px;border-radius:8px;border:0;width:100%;margin:8px 0" required/>
+        <input name="email" placeholder="Email" style="padding:10px;border-radius:8px;border:0;width:100%;margin:8px 0" required/>
+        <select name="destination" style="padding:10px;border-radius:8px;border:0;width:100%;margin:8px 0">
+          <option value="">Preferred Destination</option>
+          <option>UK</option><option>Canada</option><option>Australia</option>
+        </select>
+        <button class="btn-primary" type="submit" style="width:100%;margin-top:6px">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:18px;color:rgba(230,238,248,0.7);font-size:0.9rem">
+    © 2025 Global Lead Consultancy
+  </div>
+</footer>
+
+</main>
+</body>
+</html>
